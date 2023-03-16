@@ -17,12 +17,12 @@ namespace WebPageCaching.Controllers
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "Views/Test.cshtml");
             byte[] fileByte=System.IO.File.ReadAllBytes(path);
-            _distributedCache.Set("dosya", fileByte);
+            _distributedCache.Set("htmlFile", fileByte);
             return View();
         }
         public IActionResult ShowFile()
         {
-            byte[] webPage = _distributedCache.Get("dosya");
+            byte[] webPage = _distributedCache.Get("htmlFile");
             return File(webPage,"text/html");
         }
     }
